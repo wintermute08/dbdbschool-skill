@@ -1,5 +1,4 @@
 import importlib.util
-import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -57,9 +56,9 @@ class InstallTests(unittest.TestCase):
             self.assertTrue(sibling.is_dir())
             self.assertFalse((Path(tmp) / "dbdbschool").exists())
 
-    def test_codex_home_override(self):
-        with patch.dict(os.environ, {"CODEX_HOME": "/tmp/example-codex"}):
-            self.assertEqual(installer.default_skills_dir(), Path("/tmp/example-codex/skills"))
+    def test_default_user_skill_directory(self):
+        with patch.object(installer.Path, "home", return_value=Path("/tmp/example-home")):
+            self.assertEqual(installer.default_skills_dir(), Path("/tmp/example-home/.agents/skills"))
 
     def test_self_copy_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:

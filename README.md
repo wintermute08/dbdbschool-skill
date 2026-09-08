@@ -23,7 +23,7 @@
 python3 scripts/install_skill.py
 ```
 
-기본 설치 위치는 `${CODEX_HOME:-$HOME/.codex}/skills/dbdbschool`입니다. 다른 위치에서 내용을 검토하려면 대상 skills 디렉터리를 지정합니다.
+기본 설치 위치는 `$HOME/.agents/skills/dbdbschool`입니다. 이 위치에 설치한 개인 스킬은 모든 프로젝트에서 사용할 수 있습니다. 다른 위치에서 내용을 검토하려면 대상 skills 디렉터리를 지정합니다.
 
 ```bash
 python3 scripts/install_skill.py --skills-dir /path/to/skills
@@ -37,6 +37,36 @@ $dbdbschool 신입생 가학적을 본학적으로 바꾼 뒤 확인할 항목�
 $dbdbschool 환불 완료 후 지원금과 행정실 파일을 어떻게 확인해야 해?
 $dbdbschool 담임용 미신청자 조회 안내를 작성해 줘.
 ```
+
+## Codex 데스크톱 앱에서 사용
+
+1. GitHub의 이 비공개 저장소에서 **Code > HTTPS > URL 복사**를 선택한 뒤, 접근 권한이 있는 컴퓨터에서 저장소를 복제합니다.
+
+   ```bash
+   git clone <복사한-비공개-저장소-URL>
+   cd dbdbschool-skill
+   ```
+
+2. 개인 스킬 폴더에 설치합니다.
+
+   ```bash
+   python3 scripts/install_skill.py
+   ```
+
+   기존 `dbdbschool` 설치가 있으면 덮어쓰지 않습니다. 기존 설치를 먼저 백업하거나 직접 비교한 뒤 갱신하세요.
+
+3. ChatGPT 데스크톱 앱을 열고 로그인합니다. 사이드바의 **Skills**에서 **디비디비 늘봄·방과후학교**를 확인합니다. 바로 나타나지 않으면 앱을 다시 시작합니다.
+
+4. Codex에서 새 대화를 열고 Skills에서 이 스킬을 선택하거나, 요청 앞에 `$dbdbschool`을 붙입니다.
+
+   ```text
+   $dbdbschool 4월 강좌별 수강료와 지원금을 검토하고 행정실 전달용 엑셀을 만들어 줘.
+   $dbdbschool 신입생 가학적을 본학적으로 바꾼 뒤 확인할 항목을 정리해 줘.
+   ```
+
+5. 엑셀 작업은 디비디비스쿨에서 내려받은 최신 일괄입력 샘플과 원본 자료를 같은 작업 폴더에 두고 요청합니다. 학생 명단·생년월일·연락처·지원금 자료가 있는 폴더는 비공개로 유지하고 GitHub에 올리지 않습니다.
+
+Codex는 요청 내용이 스킬 설명과 맞으면 이 스킬을 자동으로 선택할 수도 있습니다. 정확한 적용이 필요할 때는 `$dbdbschool`을 명시하세요. 공식 사용법은 [OpenAI의 Build skills 문서](https://learn.chatgpt.com/docs/build-skills)에서 확인할 수 있습니다.
 
 설명·초안·파일 작성·실제 시스템 반영을 구분하며, 이미 구체적으로 승인된 업무는 반복 확인하지 않도록 설계했습니다. 데이터 삭제, 발송, 권한 변경 등의 실행은 요청 범위와 연결 도구의 규칙을 따릅니다.
 

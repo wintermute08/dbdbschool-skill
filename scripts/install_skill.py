@@ -2,7 +2,6 @@
 """Install this repository's skill without replacing an existing installation."""
 
 import argparse
-import os
 from pathlib import Path
 import shutil
 import sys
@@ -12,8 +11,7 @@ SOURCE = Path(__file__).resolve().parents[1] / "skills" / SKILL_NAME
 
 
 def default_skills_dir():
-    codex_dir = os.environ.get("CODEX_HOME")
-    return (Path(codex_dir).expanduser() if codex_dir else Path.home() / ".codex") / "skills"
+    return Path.home() / ".agents" / "skills"
 
 
 def install(skills_dir, source=SOURCE):
